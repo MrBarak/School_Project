@@ -1,0 +1,828 @@
+*{
+    /* Here i try to set some default values of all element to zero, so that these can customize*/
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0; /*outline is the outline of any element it also includes border*/
+    text-decoration: none; /* This will remove all the decoration like color, underline etc */
+    list-style: none; /* this will remove the bullets from list <li>*/
+    box-sizing: border-box; /*By this, each element will not excceed from it's parent's css size*/
+}
+
+/* now we create some variable to use*/
+:root{
+    --color-primary: #6c63ff;
+    --color-success: #00bf8e;
+    --color-warning: #f7c94b;
+    --color-danger: #f75842;
+
+    --color-danger-variant: rgba(247, 88, 66, 0.4);
+
+    --color-white: #fff;
+    --color-light: rgba(255, 255, 255, 0.7);
+    --color-black: #000;
+
+    --color-bg: #1f2641;
+    --color-bg1: #2e3267;
+    --color-bg2: #424890;
+
+    /* Below widths of container which we will use are described */
+    --container-width-lg: 76%;
+    --container-width-md: 90%;
+    --container-width-sm: 94%;
+
+    --transition: all 400ms ease; /* Here it means transition will be applied to any tag to which this variable will be assigned, and its duration is 400ms and its transition function is 'ease', and there is no delay*/
+}
+
+body{
+    font-family: 'Montserrat', sans-serif; /* This is copied from Google font */
+    line-height: 1.7;
+    color: var(--color-white);
+    background-color: var(--color-bg);
+}
+
+.container{
+    width: var(--container-width-lg);
+    margin: 0 auto; /* this will create 0 margin on top and bottom and equally divide margin from left and right and make the container in center from left and right*/
+}
+
+section{
+    padding: 6rem 0; /* here we have set the top and bottom padding 6rem which is gives padding according to the root element, So as by-default root's padding is 16px so by doing 6rem it will give it padding of 6 * 16 = 96px from top and bottom and zero from left and right*/
+
+}
+
+section h2{
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+h1, h2, h3, h4, h5{
+    line-height: 1.2;
+
+}
+
+h1{
+    font-size: 2.4rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+h3{
+    font-size: 1.6rem;
+}
+
+h4{
+    font-size: 1.4rem;
+}
+
+a{
+    color: var(--color-white);
+}
+
+img{
+    width: 100%;
+    display: block;
+    /* now every <img> will be of 100% width and will be considered as block element */
+    object-fit: cover; /* this will work same as background-size and it will cover the whole <img> container with the image */
+}
+
+.btn{ 
+    display: inline-block;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    padding: 1rem 2rem; /* 1 * 16 = 16px and 2 * 16 = 32px */
+    border: 1px solid transparent;
+    font-weight: 500; /*medium font-weight is set*/
+    /* So as we want our button to move through a very smooth transition and transition should be applied on all properties of this class, so that's why we have use 'all' in upper transition variable, now below we will use that transition button like */
+    transition: var(--transition);
+}
+
+.btn:hover{
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-primary{
+    background-color: var(--color-danger);
+    color: var(--color-white);
+}
+
+/* ________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NAVBAR CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------- */
+
+nav{
+    width: 100vw; /* now as we have set width to 100 viewport width which definess that no matter on which device our website is one, this navbar will take the full width of screen*/
+    height: 5rem; /* 5*16 = 80px */
+
+    /* Now we will set our navbar fixed on the top of webpage so we do like */
+    position: fixed;
+    top: 0;
+    /* and as we want this navbar to be on top of every thing when website is scroll so we give it a z-index and assign it a highest value like */
+    z-index: 11;
+
+
+    transition: var(--transition); /* This tranistion will be applied on you scroll and background color appears, for this a JS function is written and css class is designed below like*/
+}
+
+/* Below is the Styles to be applied on navbar upon scrolling. So */
+
+.window-scroll{
+    background-color: var(--color-primary);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3); /*
+        for box-shadow explanation is given below
+    */
+}
+
+.nav__container{ /* BE CAREFUL while changings here double dashes ('_') are used '__' */
+    height: 100%; /* this 100% height will be relative to it's parent which ia <nav> who has 80px of hiegth*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* So as the icon buttons which we have added are only to visible on small devices so for the big screen make them invisible like */
+
+nav button{
+    display: none;/* if you have given 'visibility: hidden;' this will only hide the button but space will be occupied by the item, but 'display: none;' will not only hide but also make it's space in the html page free so that other tags could use them.  */
+    
+}
+
+.nav__menu{ /* two dashes are used*/
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* 64px | gap is actually a margin between the items of flex-box*/
+}
+
+.nav__menu a{
+    font-size: 0.9rem; /*root font-size: 16px, so 0.9*16= 14.4px will be assigned*/
+    transition: var(--transition);
+}
+
+.nav__menu a:hover{
+    color: var(--color-bg2);
+
+}
+
+
+/* ________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HEADER CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------- */
+
+header{
+    /* here we try to give it position to header, as it should be below navbar so it position should be relative and it's top position should be as same as the height of navbar, So */
+    position:relative;
+    top: 5rem; /*  now this means that this header will start from 80px position i.e. right below the navbar*/
+    overflow: hidden;
+    height: 70vh; /* 70 out of 100 is assigned to this header*/
+    margin-bottom: 5rem; /* 80px */
+}
+
+.header__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Fr is a fractional unit and 1fr is for 1 part of the available space. So this mean we have splited the grid in to two equal parts */
+    align-items: center;
+    gap: 5rem;
+    height: 100%;
+}
+
+.header__left p{
+    margin: 1rem 0 2.4rem;
+    
+}
+
+/* __________________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CATEGORIES CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* ------------------------------------------------------------------------------------------ */
+
+.categories{
+     background-color: var(--color-bg1);
+     height: 34rem;
+}
+
+.categories h1{
+    line-height: 1;
+    margin-bottom: 3rem;
+}
+
+.categories__container{
+    /* As this container contains two elements one is left-container and other ir right-container, so, in order to show them parallel i.e. in a single row, we will divide them using grid like below */
+    display: grid;
+    grid-template-columns: 40% 60%;/*left will be of 40% and right will be of 60%*/
+    /*gap: 4rem; /*there will be gap of 64px*/
+}
+
+.categories__left{
+    margin-right: 4rem;
+}
+
+.categories__left p{
+    margin: 1rem 0 3rem;
+}
+
+.categories__right{
+    /* As this is side contains all the catogories, so we try to display them in tabular form, So we use grid like */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /*This means it will create three columns, which is divided equally, in each row. So currently we have 6 item so we will have two row each has three items cover equal space*/
+    gap: 1.2rem;
+}
+
+.category{
+    background: var(--color-bg2);
+    padding: 2rem;
+    border-radius: 2rem;
+    transition: var(--transition);
+}
+
+.category h5{
+    margin: 2rem 0 1rem;
+}
+
+.category p {
+    font-size: 0.85rem;
+}
+
+.category:hover{
+    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.3);/* Here it will give shadow below on each side except on top and smoothenss and width of show is given along with color and its 0.3 transparency*/
+    z-index:1;
+}
+
+.category__icon{
+    background-color: var(--color-primary);
+    padding: 0.7rem;
+    border-radius: 0.9rem;
+}
+/* in upper some lines we have given icons category__icon some css.
+   but we want that each icon should have same css as above but different color, so we use pseudo-class and by using 'category__icon' parent class we call their childs and apply color css like below */
+
+.category:nth-child(2) .category__icon{ /* Here it means the 2nd child of 'category' class which has class 'category__icon',
+    now we can apply color here like */
+
+    background-color: var(--color-danger);
+}
+
+.category:nth-child(3) .category__icon{
+    background-color: var(--color-success);
+}
+
+.category:nth-child(4) .category__icon{
+    background-color: var(--color-warning);
+}
+.category:nth-child(5) .category__icon{
+    background-color: var(--color-success);
+}
+.category:nth-child(6) .category__icon{
+    background-color: var(--color-danger);
+}
+
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< COURSES CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+.courses{
+    margin-top: 10rem;
+}
+
+.courses__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.course{
+    background-color: var(--color-bg1);
+    text-align: center;
+    border: 1px solid transparent; /* we do not give it any color and keep it transparent bcz, we will set it's color in it's hover function. But right now it is transparent*/
+    border-radius: 10px; /* This will give radiue curve to each course section but donot give radius to img, so for img we have to style separately */
+    transition: var(--transition);
+}
+
+.course img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* these upper two commands will give curve to upper end of image */
+}
+
+.course:hover{
+    background-color: transparent;
+    border-color: var(--color-primary);
+
+}
+
+.course__info{
+    padding: 2rem;
+}
+
+.course__info p{
+    margin: 1.2rem 0 2rem;
+    font-size: 0.9rem;
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FAQs CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+.faqs{
+    background-color: var(--color-bg1);
+    box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.5);
+}
+
+.faqs__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.faq{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    height: fit-content;
+    background-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.faq h4{
+    font-size: 1rem;
+    line-height: 2.2;
+}
+
+.faq__icon{
+    align-self: flex-start; /* align-self is used to specifically giving any item/content of flex-box a position it also has values like 'center', 'flex-start', 'flex-end' if your flex is horizontal then this would work in vertical direction and vice versa */
+    font-size: 1.2rem;
+    /* for icons 'font-size' will be used to increase size of icon */
+}
+
+
+
+.faq p{
+    margin-top: 0.8rem;
+    /* As initially we do not want to show our answer unless user click to see, so
+    initailly we will hide our answer which is inside this <p> tag so */
+    display: none; 
+    /* 
+    difference b/w 'display: none; ' and 'visibility: hidden;' is that visibility only hide the item but the space that is consumed by the item will be still consumed, whereas, 'display: none' will not only hide but the space will also se set free for other elements
+    */
+    
+}
+
+
+.faq.open p { /* here we donot give space between .faq and .open*/
+    
+    display: block;
+    /* Here by using upper command our hidden <p> tag will be visible again so */
+}
+
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TESTIMONIALS CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+
+.testimoinals__container{
+    overflow-x: hidden; /*as our testimonial is something like crousal like it flow from right to left so, we will allow only those to visible which are inside this container, overflown content is kept hidden here*/
+    position: relative;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
+
+
+.testimonial{
+    padding-top: 2rem;
+}
+
+
+.avatar img{
+    width: 6rem;
+    height: 6rem;
+}
+
+.avatar{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    border: 1rem solid var(--color-bg1);
+    box-shadow: 0 0 2rem var(--color-primary);
+}
+
+.testimonial__info{
+    text-align: center;
+}
+
+.testimonial__body{
+    background: var(--color-primary);
+    padding: 2rem;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.testimonial__body::before{
+    /* This is created to create a arrow box over a <p> text, 
+    in ::before class css will applied on that tag on which this class is given and this will add content before all other child content of that class.
+    It is used to create another tag in html file using css*/
+    content: ""; /*Here you can add text content in the in you newly created item in html tag*/
+    display: block;
+    transform: rotate(45deg);
+    background: linear-gradient(
+        135deg,  /*This will tell location at which gradient should applied*/
+        transparent, /*This will tell, gradient should be transparent at the end*/
+        var(--color-primary), 
+        var(--color-primary),
+        var(--color-primary)
+        );
+    width: 3rem;
+    height: 3rem;
+    position: absolute; /* As absolute will works accroding to the root element i.e. html, but as here we have given the actual class '.testimonial__body' a position equals to 'relative' which defines that 'testimonial__body' will be positioned according to it's parent. So now giving this new element (i.e. '.testimonial__body::before') a position equals to 'absolute' this will work according to it's relative position parent irrespective of html */
+    left: 46%; /*this will center our item*/
+    top: -1.5rem; /*this will move our item half outside of parent box*/
+}
+
+.testimoinals__container .pagination{
+    position: relative;
+    top: 5px;
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+footer{
+    background-color: var(--color-bg1);
+    padding: 5rem 0 3rem;
+    font-size: 0.9rem;
+
+}
+
+.footer__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+}
+
+.footer__container > div h4{/* '>' means direct child, works as same as 'ul li div' etc [google it]*/
+    margin-bottom: 1.2rem;
+}
+
+.footer__1 p{
+    margin: 0 0 2rem;
+}
+
+.footer__4 p {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer__4 p:hover{
+    text-decoration: underline;
+    cursor:default;
+}
+
+footer ul li{
+    margin-bottom: 0.7rem; 
+}
+
+footer ul li a:hover{
+    text-decoration: underline;
+}
+
+.footer__socials{
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.footer__copyright{
+    text-align: center;
+    margin-top: 4rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--color-bg2);
+}
+
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<< MEDIA QUERRIES FOR TABLETS CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+
+@media screen and (max-width: 1024px){ /*This means, anything screen which is equal or less than 1024 px will have this following styles */
+    
+
+    .container{
+        width: var(--container-width-md);
+    }
+
+    h1{
+        font-size: 2.2rem;
+    }
+
+    h2{
+        font-size:1.7rem;
+    }
+
+    h3{
+        font-size:1.4rem;
+    }
+
+    h4{
+        font-size:1.2rem;
+    }
+
+    
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<< NAVBAR MENU Responsive CSS BELOW >>>>>>>>>>>>>>>>>> */
+
+    nav button{
+        display: inline-block;
+        background: transparent;
+        font-size: 1.8rem;
+        color: var(--color-white);
+        cursor: pointer;
+    }
+
+    nav button#close-menu-btn{ /*child tags which has which has id is writtwn here without space*/
+        display:none;
+    }
+
+    .items ul li {
+        font-size: 1.5rem;
+        background-color: var(--color-primary);
+    }
+
+    .nav__menu{
+        position: fixed;
+        top: 5rem;
+        right: 5%;
+        height: fit-content;
+        width: 18rem;
+        flex-direction: column;
+        gap: 0;
+        display: none; /* Here we have set the display none bcz, we will create a Js Function that will display it when we click on button, then we will display it */
+    }
+
+    .nav__menu li {
+        width: 100%;
+        height: 5.8rem;
+        animation: animateNavItems 400ms linear forwards; 
+        /* the upper animation will rotate from center */
+        transform-origin: top right; /* now it will rotate from top-right end */
+        opacity: 0;
+    }
+
+    .nav__menu li:nth-child(2)
+    {
+        animation-delay: 200ms;
+    }
+
+    .nav__menu li:nth-child(3)
+    {
+        animation-delay: 400ms;
+    }
+
+    .nav__menu li:nth-child(4)
+    {
+        animation-delay: 600ms;
+    }
+
+    @keyframes animateNavItems {
+        0%{
+            transform: rotateZ(-90deg) rotateX(90deg) scale(0.1);
+        }
+        100%{
+            transform: rotateZ(0deg) rotateX(0deg) scale(1);
+            opacity: 1;
+        }
+    }   
+
+    @keyframes animateNavItemsR {
+        0%{
+            transform: rotateZ(0deg) rotateX(0deg) scale(1);
+            opacity: 1;
+        }
+        100%{
+            transform: rotateZ(-90deg) rotateX(90deg) scale(0.1);
+            opacity: 0;
+            /* display: none;             */
+        }
+    }
+
+    .nav__menu li a{
+        background-color: var(--color-primary);
+        box-shadow: -4rem 6rem 10rem rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        /* 
+        the upper command 'place-items' used in grid and can perform both followinf  functions at the same time
+
+        justify-content: center;
+        align-items: center;
+
+        i.e. place-items are used to align item horizontally as well as veritically
+        */
+
+    }
+
+    .nav__menu li a:hover{
+        background-color: var(--color-bg2);
+        color: white;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<< Header responsive CSS BELOW >>>>>>>>>>>>>>>>>>>>>>> */
+
+    header{
+        height: 52vh;
+        margin-bottom: 4rem;
+
+    }
+
+    .header__container{
+        gap:0;
+        padding-bottom: 3rem;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<< Categories responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .categories{
+        height: auto;
+        /* you can also set heigth to 'fit-content' it will work as same */
+    }
+
+    .categories__container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .categories__left{
+        margin-right: 0;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<< COURSES responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .courses{
+        margin-top: 0;
+    }
+
+    .courses__container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<<<<< FAQs responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .faqs__container{
+        grid-template-columns: 1fr;
+    }
+
+    .faq{
+        padding: 1.5rem;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<<< FOOTER responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .footer__container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<< MEDIA QUERRIES FOR MOBILES CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+@media screen and (max-width:600px){
+    .container{
+        width: var(--container-width-sm);
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<<< NAVBAR responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .nav__menu{
+        right: 3%;
+    }
+
+    header{
+        height: auto;
+    }
+
+    .header__container{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .header__left p{
+        margin-bottom: 1.3rem;
+    }
+
+    .header_right-image{
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .header__right img{
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<< Categories responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .categories__right{
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .category__icon{
+        margin-top: 4px;
+        display: inline-block;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<< COURSES responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .courses__container{
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<< COURSES responsive CSS BELOW >>>>>>>>>>>>>>>>>>>> */
+    
+    .faq{
+        padding: 0.6rem;
+    }
+
+    .faq h4, p{
+        font-size: 0.75rem;
+        line-height: 1.8;
+    }
+
+    
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<< TESTIMONIAL responsive CSS BELOW>>>>>>>>>>>>>>>>> */
+    
+    
+    .testimonial__body{
+        padding: 1rem;
+    }
+
+
+    .testimonial__body p{
+        padding-top: 1rem;
+    }
+
+    /* ______________________________________________________________________ */
+    /* <<<<<<<<<<<<<<<<<<<< FOOTER responsive CSS BELOW >>>>>>>>>>>>>>>>>>>>> */
+    
+    .footer__container{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer__1 p {
+        margin: 1rem auto;
+    }
+
+
+    .footer__4{
+        display: flex;
+        flex-direction:column;
+        align-items : center;
+    }
+
+    .footer__socials{
+        justify-content: center;
+    }
+}
+
+
+
+@media screen and (max-width:340px){
+    .categories__right{
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+}
+

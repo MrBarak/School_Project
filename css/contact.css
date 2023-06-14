@@ -1,0 +1,185 @@
+
+.contact__container{
+    background-color: var(--color-bg1);
+    padding:4rem;
+    display: grid;
+    grid-template-columns: 40% 60%; 
+    gap: 4rem;
+    height: 30rem;
+    margin: 11rem auto 16rem auto;
+    border-radius: 1rem;
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ASIDE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+.contact__aside{
+    background: var(--color-primary);
+    padding: 3rem;
+    border-radius: 1rem;
+    position: relative;
+    bottom: 10rem;
+}
+
+.aside__image{
+    height: 300px;
+    width: 310px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0rem 0rem 3rem 1rem rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.aside__image img{
+    height: 500px;
+    width: 350px;
+}
+
+.contact__aside h2{
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.contact__aside p{
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.contact__details li{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact__details{
+    border-bottom: 2px solid white;
+    margin-bottom: 2rem;
+}
+
+.contact__socials{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.contact__socials a{
+    background-color: var(--color-bg2);
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 2rem; 
+    transition: var(--transition);
+}
+
+.contact__socials a:hover{
+    background-color: var(--color-bg1);
+    border-radius: 20%;
+    box-shadow: 0rem 0rem 1rem 0rem rgba(0, 0, 0, 0.3);;   
+}
+
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FORM >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-right: 4rem;
+}
+
+.form__name{
+    display: flex;
+    gap: 1.2rem;
+
+}
+
+input[type = "text"]{
+    width: 50%;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    background-color: var(--color-bg);
+    border-radius: 10px;
+}
+
+textarea{
+    font-family: "Tahoma";
+    font-size: 1rem;
+}
+
+form .btn{
+    width: max-content;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESPONSIVE CSS FOR TABLETS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+@media screen and (max-width:1024px) {
+        
+    /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CONTACT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+    .contact{
+
+    }
+
+    .contact__container{
+        gap:1.5rem;
+        margin-top: 3rem;
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ASIDE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+
+    .contact__aside{
+        width: auto;
+        padding: 1.5rem;
+        bottom: 0;
+    }
+
+    /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FORM >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+    form{
+        align-self: center;
+        margin-right:1.5rem;
+    }
+
+
+}
+
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESPONSIVE CSS FOR MOBILES >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+@media screen and (max-width:600px) {
+    .contact__container{
+        grid-template-columns: 1fr;
+        gap:3rem;
+        margin-top:0;
+        padding:0;
+    }
+
+    form{
+        margin:0 1.5rem 3rem;
+    }
+
+    .form__name{
+        flex-direction: column;
+
+    }
+
+    input[type = "text"]{
+        width: 100%;
+    }
+}

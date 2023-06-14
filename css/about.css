@@ -1,0 +1,210 @@
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ACHIEVEMENTS CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+.about__achievements{
+    margin-top: 3rem;
+
+}
+
+.about__achievements-container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 5rem;
+}
+
+.about__achievements-right > p{
+    margin: 1.6rem 0 2.5rem;
+}
+
+.achievements__cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.achievement__card{
+    /* As we have also linked the 'index.css' file to 'about.html' file, so this means
+    we can still use all the variables in all other connected css files */
+    background-color: var(--color-bg1);
+    padding: 1.6rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.achievement__card:hover{
+    background-color: var(--color-bg2);
+    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.3);
+    /* in upper command
+    
+    0 is for x-ais
+    3rem is for y-axis
+    3rem is for blurrness
+    rbga is for color 
+    and at the last 0.3 in rgba is for opacity`*/
+}
+
+.achievement__icon{
+    background-color: var(--color-danger);
+    padding: 0.6rem;
+    border-radius: 1rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 2rem; /*This will increase the size of icon*/
+}
+
+.achievement__card:nth-child(2) .achievement__icon{
+    background: var(--color-success);
+}
+
+.achievement__card:nth-child(3) .achievement__icon{
+    background: var(--color-warning);
+}
+
+.achievement__card p{
+    margin-top: 1rem;
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TEAM CSS BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+.team{
+    background-color: var(--color-bg1);
+    box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.5);
+}
+
+.team__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:2rem;
+}
+
+.team__member{
+    background-color: var(--color-bg2);
+    padding:2.2rem;
+    border:1px solid transparent;
+    border-radius: 10px;
+    transition: var(--transition);
+    position:relative; /*We have set its position relative but we donot give it any directions, 
+    because the purpose of setting it's position relative is that now upon making it's child's position absolute it will works according to this 'team__member'*/
+    overflow: hidden; /*Here it is set hidden because we want our socials icon to appear on screen on hover, so we will apply logic in which the icons will be positioned outside of team__member card, and then upon hover they will be position such that they will move back here*/
+}
+
+.team__member:hover{
+    background-color: transparent;
+    border-color: var(--color-primary);
+    padding: 1.9rem;
+    cursor: pointer;
+}
+
+.team__member-image img{
+    /* We can also apply filters to over images using CSS.
+    first we goto our desired img tag and then apply below filter like 'saturate(0)' this means remove all color and make image 'black & white' */
+    filter: saturate(0);
+    width: 190px;
+    height: 290px;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.team__member:hover img{
+    
+    filter: saturate(1); /*Here by setting 'saturate(1)' it will bring all the colors of picture back*/
+    width: 200px;
+    height: 300px;
+}
+
+.team__member-info * { /* here '*' means all the element in this class*/
+    text-align: center;
+    margin-top: 1.4rem;
+}
+
+.team__memeber-info p{
+    color: var(--color-light);
+}
+
+.team__member-socials{
+    position: absolute;
+    /* As it's parent is set 'relative' so upon setting it's position absolute, it will work according to its parent irrespectively of windows screen */
+    top: 50%;
+    transform: translateY(-60%);
+    right: -100%; /*Here we positioned it outside of 'team__member' card*/
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: -2rem 0 2rem rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.team__member-socials a{
+    padding: 1rem;
+}
+
+.team__member:hover .team__member-socials{
+    /* Here we will move the socials back to 'team__member card So*/
+    right: 0;
+}
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESPONSIVE CSS FOR TABLET BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1024px) {
+
+    /* <<<<<<<<<<<<<<<<<<<< ABOUT ACHIEVEMENTS >>>>>>>>>>>>>>>>>> */
+    .about__achievements{
+        margin-top: 2rem;
+    }
+  
+    .about__achievements-container{
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about__achievements-left{
+        width: 80%;
+        margin: 0 auto; /*This way you can center something, i.e. setting vertical margin 0 and horizontal margin divided in half*/
+
+    }
+
+    /* <<<<<<<<<<<<<<<<<<<< ABOUT TEAM HEADS >>>>>>>>>>>>>>>>>> */
+
+    .team__container{
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+
+}
+
+
+/* _______________________________________________________________________________________ */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RESPONSIVE CSS FOR MOBILE BELOW >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* --------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 600px) {
+
+    /* <<<<<<<<<<<<<<<<<<<< ABOUT ACHIEVEMENTS >>>>>>>>>>>>>>>>>> */
+    .achievements__cards{
+        grid-template-columns: repeat(2, 1fr);
+        gap:1rem;
+    }
+
+    .achievement__card{
+        padding: 1rem;
+    }
+
+    .achievement__icon{
+        margin-bottom: 1rem;
+    }
+
+    /* <<<<<<<<<<<<<<<<<<<< ABOUT TEAM HEAD >>>>>>>>>>>>>>>>>> */
+
+    .team__container{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
